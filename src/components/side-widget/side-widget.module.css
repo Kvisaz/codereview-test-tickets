@@ -1,0 +1,22 @@
+.sideWidget {
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    box-sizing: content-box;
+    padding: 20px;
+}
+
+.label {
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+input[type='checkbox'] {
+
+}
+
+input[type='radio'] {
+
+}

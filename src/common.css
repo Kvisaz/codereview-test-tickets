@@ -28,8 +28,6 @@ a {
 
 .pageContent {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: var(--page-padding);
 }
 
@@ -40,6 +38,8 @@ a {
 }
 
 .pageSelectors {
+    display: flex;
+    flex-direction: column;
 }
 
 .pageMain {

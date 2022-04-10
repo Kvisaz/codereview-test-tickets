@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import 'common.css';
 import styles from './tickets.module.css';
-import { Logo, SortButtons, Ticket } from 'components';
+import { Logo, SortButtons, Ticket, TransChecks } from 'components';
+import { Services } from '../../services';
 
 interface IProps {
 
@@ -12,9 +13,9 @@ export const Tickets: React.FC<IProps> = () => {
   const [selectedButton, setSelectedButton] = useState(0);
 
   const buttons = [
-    'Самый дешевый',
-    'Самый быстрый',
-    'Оптимальный',
+    Services.strings.ticketSortCheapest,
+    Services.strings.ticketSortFastest,
+    Services.strings.ticketSortOptimal,
   ];
 
   const onSortSelect = (i: number) => setSelectedButton(i);
@@ -25,7 +26,7 @@ export const Tickets: React.FC<IProps> = () => {
     </div>
     <div className={`pageContent`}>
       <div className={`pageColumn pageSelectors`}>
-        dd
+        <TransChecks />
       </div>
       <div className={`pageColumn pageMain`}>
         <SortButtons buttons={buttons} selected={selectedButton} onSelect={onSortSelect} />
