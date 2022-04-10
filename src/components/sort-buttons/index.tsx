@@ -1,31 +1,20 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import styles from './sort-buttons.module.css';
 
 export interface ISortButtonsProps {
-
+  selected: number;
+  onSelect: (i: number) => void;
+  buttons: string[];
 }
 
-const buttons = [
-  { text: 'Самый дешевый' },
-  { text: 'Самый быстрый' },
-  { text: 'Оптимальный' },
-];
 
-export const SortButtons: React.FC<ISortButtonsProps> = () => {
-
-  const [selectedButton, setSelectedButton] = useState(0);
-
-  const onClick = (i: number) => {
-    console.log(`${i}`);
-    setSelectedButton(i);
-  };
-
+export const SortButtons: React.FC<ISortButtonsProps> = ({ buttons, selected, onSelect }) => {
 
   return (
     <div className={`block ${styles.group} `}>
-      {buttons.map((props, i) => (
-        <button key={i} className={selectedButton === i ? styles.selected : ''}
-                onClick={() => onClick(i)}>{props.text}</button>))}
+      {buttons.map((text, i) => (
+        <button key={i} className={selected === i ? styles.selected : ''}
+                onClick={() => onSelect(i)}>{text}</button>))}
     </div>
   );
 };
