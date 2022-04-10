@@ -1,38 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Services } from 'services';
 import { SideWidget } from '../side-widget';
 import styles from './transfer-checks.module.css';
+import { ActionTicketType, useDispatch, useTicketState } from '../../store';
 
-const options: string[] = [
-  Services.strings.transferChecksOptionNone,
-  Services.strings.transferChecksOption1,
-  Services.strings.transferChecksOption2,
-  Services.strings.transferChecksOption3,
-];
-
-export interface ITransferChecksProps {
-
+interface ITransferCheckData {
+  label: string;
+  amount: number;
 }
 
-export const TransferChecks: React.FC<ITransferChecksProps> = () => {
-  const [selected, setSelected] = useState<Record<number, boolean | null>>({});
+const checkDatas: ITransferCheckData[] = [
+  { label: Services.strings.transferChecksOptionNone, amount: 0 },
+  { label: Services.strings.transferChecksOption1, amount: 1 },
+  { label: Services.strings.transferChecksOption2, amount: 2 },
+  { label: Services.strings.transferChecksOption3, amount: 3 },
+];
 
-  const onSelect = (i: number) => {
-    setSelected({
-      ...selected,
-      [i]: selected[i] == null ? true : null,
+export const TransferChecks: React.FC = () => {
+
+  const { selectedTransfers } = useTicketState();
+  const dispatch = useDispatch();
+  console.log('selectedTransfers', selectedTransfers);
+
+  const onSelect = (amount: number) => {
+    dispatch({
+      type: ActionTicketType.TRANSFER_SELECT,
+      amount,
     });
-    console.log('select!');
   };
 
   return (<SideWidget label={Services.strings.transferChecksTitle}>
-    {options.map((option, i) => (
-      <label key={i} className={selected[i] != null ? styles.selected : styles.label}>
+    {checkDatas.map(({ label, amount }, i) => (
+      <label key={i} className={selectedTransfers[amount] ? styles.selected : styles.label}>
         <input
           type='checkbox'
-          onChange={() => onSelect(i)}
-          checked={selected[i] != null}
-        />{option}
+          onChange={() => onSelect(amount)}
+          checked={selectedTransfers[amount] === true}
+        />{label}
       </label>))}
   </SideWidget>);
 };

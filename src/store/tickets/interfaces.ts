@@ -1,9 +1,9 @@
 import { BackendTypes } from '../../services/data';
 
 export enum TicketSort {
-  CHEAPEST='CHEAPEST',
-  FASTEST='FASTEST',
-  OPTIMAL='OPTIMAL'
+  CHEAPEST = 'CHEAPEST',
+  FASTEST = 'FASTEST',
+  OPTIMAL = 'OPTIMAL'
 }
 
 /**
@@ -30,7 +30,7 @@ export type CityCodes = BackendTypes.CityCodes;
 
 export interface ITicketState {
   sortOrder: TicketSort;
-  selectedTransfers: number;
+  selectedTransfers: Record<number, boolean | null>; // amount setted
   selectedCompanyId?: string;
   tickets: Ticket[];
   showed: number;
