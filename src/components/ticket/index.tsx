@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ticker.module.css';
+import styles from './ticket.module.css';
 import { Cell, CompaniesLogos } from './components';
 
 export interface ITicketProps {
