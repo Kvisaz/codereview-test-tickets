@@ -1,6 +1,25 @@
-import { combineReducers, createStore } from 'redux';
-import { ITicketState, ticketReducer } from './tickets';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import {
+  ActionTicket,
+  ActionTicketType,
+  CityCodes,
+  Company,
+  ITicketState,
+  Segment,
+  Ticket,
+  ticketReducer,
+  TicketSort,
+} from './tickets';
 import { TypedUseSelectorHook, useDispatch as ReactUseDispatch, useSelector as ReactUseSelector } from 'react-redux';
+
+export type {
+ Ticket, ActionTicket,Segment, CityCodes, Company, ITicketState,
+};
+
+export {
+  ActionTicketType,
+  TicketSort,
+}
 
 const rootReducer = combineReducers({
   tickets: ticketReducer,

@@ -1,9 +1,9 @@
 import { BackendTypes } from '../../services/data';
 
 export enum TicketSort {
-  CHEAPEST,
-  FASTEST,
-  OPTIMAL
+  CHEAPEST='CHEAPEST',
+  FASTEST='FASTEST',
+  OPTIMAL='OPTIMAL'
 }
 
 /**

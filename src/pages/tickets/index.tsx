@@ -1,30 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'common.css';
+import { Services } from 'services';
+import { ActionTicketType, TicketSort, useDispatch, useTicketState } from 'store';
+import { CompanySelector, Logo, SortButtons, Ticket, TransferChecks } from 'components';
 import styles from './tickets.module.css';
-import { Logo, SortButtons, Ticket, TransferChecks } from 'components';
-import { Services } from '../../services';
-import { CompanySelector } from '../../components/company-selector';
-import { useTicketState } from '../../store';
 
-interface IProps {
-
+interface ISortButtonData {
+  label: string;
+  order: TicketSort;
 }
 
-export const Tickets: React.FC<IProps> = () => {
+const buttons: ISortButtonData[] = [
+  { label: Services.strings.ticketSortCheapest, order: TicketSort.CHEAPEST },
+  { label: Services.strings.ticketSortFastest, order: TicketSort.FASTEST },
+  { label: Services.strings.ticketSortOptimal, order: TicketSort.OPTIMAL },
+];
 
-  const { tickets } = useTicketState();
+export const Tickets: React.FC = () => {
 
-  console.log('tickets', tickets);
+  const { tickets, sortOrder } = useTicketState();
+  const dispatch = useDispatch();
 
-  const [selectedButton, setSelectedButton] = useState(0);
+  console.log('sortOrder', sortOrder);
 
-  const buttons = [
-    Services.strings.ticketSortCheapest,
-    Services.strings.ticketSortFastest,
-    Services.strings.ticketSortOptimal,
-  ];
+  const onSortSelect = (i: number) => {
+    dispatch({
+      type: ActionTicketType.SORT,
+      order: buttons[i]?.order ?? TicketSort.FASTEST,
+    });
+  };
 
-  const onSortSelect = (i: number) => setSelectedButton(i);
+  const getSelectedButtonIndex: number = buttons.findIndex(b => b.order === sortOrder) || 0;
 
   return (<div className={`page`}>
     <div className={`pageHeader ${styles.logo}`}>
@@ -36,7 +42,7 @@ export const Tickets: React.FC<IProps> = () => {
         <CompanySelector />
       </div>
       <div className={`pageColumn pageMain`}>
-        <SortButtons buttons={buttons} selected={selectedButton} onSelect={onSortSelect} />
+        <SortButtons buttons={buttons.map(b => b.label)} selected={getSelectedButtonIndex} onSelect={onSortSelect} />
         <Ticket />
         <Ticket />
         <Ticket />

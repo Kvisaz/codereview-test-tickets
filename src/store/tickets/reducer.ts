@@ -14,9 +14,9 @@ export function ticketReducer(
       };
     }
     case ActionTicketType.SORT: {
-      console.log('ActionTicketType.SORT')
       return {
         ...state,
+        sortOrder: action.order
       };
     }
     case ActionTicketType.TRANSFER_SELECT: {
