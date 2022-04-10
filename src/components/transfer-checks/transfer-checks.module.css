@@ -1,7 +1,8 @@
-.checkBox {
-
+.label {
+    cursor: var(--cursor);
 }
 
-input[checked]{
+.selected {
+    composes: label;
     background-color: var(--secondary-color);
 }

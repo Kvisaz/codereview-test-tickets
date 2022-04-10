@@ -3,6 +3,7 @@ import 'common.css';
 import styles from './tickets.module.css';
 import { Logo, SortButtons, Ticket, TransferChecks } from 'components';
 import { Services } from '../../services';
+import { CompanySelector } from '../../components/company-selector';
 
 interface IProps {
 
@@ -27,6 +28,7 @@ export const Tickets: React.FC<IProps> = () => {
     <div className={`pageContent`}>
       <div className={`pageColumn pageSelectors`}>
         <TransferChecks />
+        <CompanySelector />
       </div>
       <div className={`pageColumn pageMain`}>
         <SortButtons buttons={buttons} selected={selectedButton} onSelect={onSortSelect} />
