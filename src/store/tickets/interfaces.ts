@@ -17,13 +17,13 @@ export enum TicketSort {
  * можно вставить не только конверторы, но и guards - защитные шлюзы-конверторы данных
  * от невалидных ответов с бэка
  */
-export interface Company extends BackendTypes.Company {
+export interface ICompany extends BackendTypes.Company {
 }
 
-export interface Ticket extends BackendTypes.Ticket {
+export interface ITicket extends BackendTypes.Ticket {
 }
 
-export interface Segment extends BackendTypes.Segment {
+export interface ISegment extends BackendTypes.Segment {
 }
 
 export type CityCodes = BackendTypes.CityCodes;
@@ -32,6 +32,7 @@ export interface ITicketState {
   sortOrder: TicketSort;
   selectedTransfers: Record<number, boolean | null>; // amount setted
   selectedCompanyId?: string;
-  tickets: Ticket[];
+  tickets: Record<string, ITicket>;
   showed: number;
+  companiesId: string[]; // all companies ids
 }

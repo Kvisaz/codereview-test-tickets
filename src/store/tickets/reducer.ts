@@ -25,14 +25,25 @@ export function ticketReducer(
         ...state,
         selectedTransfers: {
           ...state.selectedTransfers,
-          [action.amount]:  state.selectedTransfers[action.amount] ? null : true
-        }
+          [action.amount]: state.selectedTransfers[action.amount] ? null : true,
+        },
       };
     }
     case ActionTicketType.COMPANY_SELECT: {
       console.log('ActionTicketType.COMPANY_SELECT');
       return {
         ...state,
+      };
+    }
+
+    case ActionTicketType.TICKETS_ADDED: {
+      console.log('ActionTicketType.TICKETS_ADDED');
+      return {
+        ...state,
+        tickets: {
+          ...state.tickets,
+          ...action.tickets,
+        },
       };
     }
 
