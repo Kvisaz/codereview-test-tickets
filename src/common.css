@@ -5,6 +5,7 @@
     --cursor: url('../public/cursor.png'), auto;
     --primary-content-color: #4A4A4A;
     --secondary-content-color: #A0B0B9;
+    --page-padding: 20px;
 }
 
 a {
@@ -14,12 +15,34 @@ a {
 .page {
     display: flex;
     flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.row {
+.pageHeader {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pageContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--page-padding);
+}
+
+.pageColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--page-padding);
+}
+
+.pageSelectors {
+}
+
+.pageMain {
+    width: 502px;
 }
 
 .block {

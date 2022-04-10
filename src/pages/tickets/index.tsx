@@ -10,11 +10,19 @@ interface IProps {
 
 export const Tickets: React.FC<IProps> = () => {
   return (<div className={`page`}>
-    <div className={`row ${styles.logo}`}>
+    <div className={`pageHeader ${styles.logo}`}>
       <Logo />
     </div>
-    <div className={`row`}>
-          <Ticket />
+    <div className={`pageContent`}>
+      <div className={`pageColumn pageSelectors`}>
+           dd
+      </div>
+      <div className={`pageColumn pageMain`}>
+        <Ticket />
+        <Ticket />
+        <Ticket />
+        <Ticket />
+      </div>
     </div>
   </div>);
 };
