@@ -1,3 +1,14 @@
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #F1FCFF;
+    --selected-color: var(--secondary-color);
+    --cursor: url('../public/cursor.png'), auto;
+}
+
+a {
+    cursor: var(--cursor);
+}
+
 .page {
     display: flex;
     flex-direction: column;
@@ -7,4 +18,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.block {
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
