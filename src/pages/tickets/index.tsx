@@ -1,8 +1,7 @@
 import React from 'react';
 import 'common.css';
 import styles from './tickets.module.css';
-import { Logo } from 'components';
-import { Ticket } from '../../components/ticket';
+import { Logo, Ticket, SortButtons } from 'components';
 
 interface IProps {
 
@@ -18,6 +17,7 @@ export const Tickets: React.FC<IProps> = () => {
            dd
       </div>
       <div className={`pageColumn pageMain`}>
+        <SortButtons />
         <Ticket />
         <Ticket />
         <Ticket />

@@ -6,6 +6,7 @@
     --primary-content-color: #4A4A4A;
     --secondary-content-color: #A0B0B9;
     --page-padding: 20px;
+    --common-border-radius: 5px;
 }
 
 a {
@@ -48,5 +49,5 @@ a {
 .block {
     background: #FFFFFF;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: var(--common-border-radius);
 }
