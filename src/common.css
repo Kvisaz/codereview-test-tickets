@@ -3,6 +3,8 @@
     --secondary-color: #F1FCFF;
     --selected-color: var(--secondary-color);
     --cursor: url('../public/cursor.png'), auto;
+    --primary-content-color: #4A4A4A;
+    --secondary-content-color: #A0B0B9;
 }
 
 a {

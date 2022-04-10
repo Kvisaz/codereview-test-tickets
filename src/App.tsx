@@ -1,10 +1,8 @@
 import React from 'react';
 import { Tickets } from './pages';
 
-function App() {
+export const App: React.FC = () => {
   return (
     <Tickets />
   );
-}
-
-export default App;
+};
