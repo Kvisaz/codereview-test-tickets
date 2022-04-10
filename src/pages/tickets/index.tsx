@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'common.css';
 import styles from './tickets.module.css';
-import { Logo, SortButtons, Ticket, TransChecks } from 'components';
+import { Logo, SortButtons, Ticket, TransferChecks } from 'components';
 import { Services } from '../../services';
 
 interface IProps {
@@ -26,7 +26,7 @@ export const Tickets: React.FC<IProps> = () => {
     </div>
     <div className={`pageContent`}>
       <div className={`pageColumn pageSelectors`}>
-        <TransChecks />
+        <TransferChecks />
       </div>
       <div className={`pageColumn pageMain`}>
         <SortButtons buttons={buttons} selected={selectedButton} onSelect={onSortSelect} />

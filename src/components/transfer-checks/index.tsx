@@ -1,7 +1,7 @@
 import React from 'react';
 import { Services } from 'services';
 import { SideWidget } from '../side-widget';
-import styles from './trans-checks.module.css';
+import styles from './transfer-checks.module.css';
 
 const options: string[] = [
   Services.strings.transferChecksOptionNone,
@@ -10,11 +10,11 @@ const options: string[] = [
   Services.strings.transferChecksOption3,
 ];
 
-export interface ITransChecksProps {
+export interface ITransferChecksProps {
 
 }
 
-export const TransChecks: React.FC<ITransChecksProps> = () => {
+export const TransferChecks: React.FC<ITransferChecksProps> = () => {
   return (<SideWidget label={Services.strings.transferChecksTitle}>
     {options.map((option, i) => (<label key={i} className={styles.checkBox}><input type='checkbox' />{option}</label>))}
   </SideWidget>);
