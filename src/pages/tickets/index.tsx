@@ -4,12 +4,17 @@ import styles from './tickets.module.css';
 import { Logo, SortButtons, Ticket, TransferChecks } from 'components';
 import { Services } from '../../services';
 import { CompanySelector } from '../../components/company-selector';
+import { useTicketState } from '../../store';
 
 interface IProps {
 
 }
 
 export const Tickets: React.FC<IProps> = () => {
+
+  const { tickets } = useTicketState();
+
+  console.log('tickets', tickets);
 
   const [selectedButton, setSelectedButton] = useState(0);
 
