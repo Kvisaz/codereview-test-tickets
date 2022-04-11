@@ -1,30 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Services } from 'services';
 import { SideWidget } from '../side-widget';
-import styles from './company-selector.module.css';
-import { RequestState, useApiState, useTicketState } from '../../store';
+import { ActionTicketType, RequestState, useApiState, useDispatch, useTicketState } from '../../store';
 import { CompanySelectorSkeleton } from './skeleton';
+import { CompanyRow } from './company-row';
 
-const companies = [
-  Services.strings.companyChecksOptionAll,
-  'S7 Airlines',
-  'XiamenAir',
-];
-
-export interface ICompanySelectorProps {
-
-}
-
-export const CompanySelector: React.FC<ICompanySelectorProps> = () => {
+export const CompanySelector: React.FC = () => {
 
   const { ticketsRequestState } = useApiState();
+  const { companies, selectedCompanyId } = useTicketState();
+  const dispatch = useDispatch();
 
+  const companiesArr = Object.values(companies);
 
-  const [selected, setSelected] = useState(0);
-
-  const onSelect = (i: number) => {
-    setSelected(i);
+  const onSelect = (id: string | null) => {
     console.log('select!');
+    dispatch({ type: ActionTicketType.COMPANY_SELECT, id });
   };
 
   if (ticketsRequestState === RequestState.PENDING || ticketsRequestState === RequestState.NOT_SETTED) {
@@ -34,13 +25,10 @@ export const CompanySelector: React.FC<ICompanySelectorProps> = () => {
   }
 
   return (<SideWidget label={Services.strings.companyChecksTitle}>
-    {companies.map((company, i) => (
-      <label key={i} className={selected === i ? styles.selected : styles.label}>
-        <input type='radio'
-               value={company}
-               checked={selected === i}
-               onChange={() => onSelect(i)} />{company}
-      </label>
+    <CompanyRow selectedId={selectedCompanyId} companyId={null} companyName={Services.strings.companyChecksOptionAll}
+                onSelect={onSelect} />
+    {companiesArr.map((company, i) => (
+      <CompanyRow key={company.id} companyId={company.id} companyName={company.name} onSelect={onSelect} />
     ))}
   </SideWidget>);
 };

@@ -33,6 +33,7 @@ export function ticketReducer(
       console.log('ActionTicketType.COMPANY_SELECT');
       return {
         ...state,
+        selectedCompanyId: action.id
       };
     }
 

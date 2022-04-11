@@ -3,7 +3,7 @@ import { ISegment, ITicket, RequestState, TicketSort, useApiState, useTicketStat
 import { Ticket, TicketSkeleton } from '../ticket';
 
 export const Tickets: React.FC = () => {
-  const { tickets, nextTicketAmount, segments, sortOrder, origin, destination } = useTicketState();
+  const { tickets, nextTicketAmount, segments, sortOrder, selectedCompanyId, selectedTransfers } = useTicketState();
   const { ticketsRequestState, error } = useApiState();
 
   if (ticketsRequestState === RequestState.REJECTED) {
@@ -15,8 +15,12 @@ export const Tickets: React.FC = () => {
   }
 
   const ticketArr = Object.values(tickets);
-  const sortedTickets = sortTickets(ticketArr, sortOrder, segments);
-  
+  const filteredbYCompany = filterCompanies(ticketArr, selectedCompanyId);
+  console.log('selectedCompanyId', selectedCompanyId);
+
+
+  const sortedTickets = sortTickets(filteredbYCompany, sortOrder, segments);
+
   const skeletonsAmount = ticketsRequestState === RequestState.PENDING || ticketsRequestState === RequestState.NOT_SETTED ? nextTicketAmount : 0;
 
   return (
@@ -28,6 +32,11 @@ export const Tickets: React.FC = () => {
     </>
   );
 };
+
+function filterCompanies(tickets: ITicket[], companyId?: string): ITicket[] {
+  if (companyId == null) return tickets;
+  return tickets.filter(t => t.companyId === companyId);
+}
 
 function sortTickets(tickets: ITicket[], order: TicketSort, segments: Record<string, ISegment>): ITicket[] {
   switch (order) {
