@@ -53,7 +53,7 @@ function getTimeValue(s: ISegment): string {
 
 function getTransferLabel(s: ISegment): string {
   const amount = s.stops.length;
-  if (amount === 0) return '';
+  if (amount === 0) return Services.strings.segmentTransfersNoneLabel;
   return `В пути ${amount} пересадки`;
 }
 
