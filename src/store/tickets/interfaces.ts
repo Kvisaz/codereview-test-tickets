@@ -30,9 +30,10 @@ export type CityCodes = BackendTypes.CityCodes;
 
 export interface ITicketState {
   sortOrder: TicketSort;
-  selectedTransfers: Record<number, boolean | null>; // amount setted
+  selectedTransfers: Record<number, boolean | null>;
   selectedCompanyId?: string;
   tickets: Record<string, ITicket>;
+  segments: Record<string, ISegment>;
   showed: number;
-  companiesId: string[]; // all companies ids
+  companies: Record<string, ICompany>; 
 }

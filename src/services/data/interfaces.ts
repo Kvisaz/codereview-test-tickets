@@ -22,9 +22,9 @@ export namespace BackendTypes {
     // Код города куда летим
     destination: CityCodes;
     // Дата и время вылета в unix времени
-    dateStart: string;
+    dateStart: number;
     // Дата и время прибытия в unix времени
-    dateEnd: string;
+    dateEnd: number;
     // Массив кодов городов с пересадками
     stops: CityCodes[];
     // Длительность полета в миллисекундах

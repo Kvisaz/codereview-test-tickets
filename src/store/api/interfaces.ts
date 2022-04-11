@@ -1,4 +1,4 @@
-export enum TicketRequestState {
+export enum IRequestState {
   NOT_SETTED = 'NOT_SETTED',
   PENDING = 'PENDING',
   RESOLVED = 'RESOLVED',
@@ -6,7 +6,8 @@ export enum TicketRequestState {
 }
 
 export interface IApiState {
-  ticketsRequestState: TicketRequestState;
+  ticketsRequestState: IRequestState;
+  companiesRequestState: IRequestState;
   error?: string;
 }
 

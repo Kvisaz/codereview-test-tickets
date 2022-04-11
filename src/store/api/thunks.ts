@@ -1,20 +1,65 @@
 import { Services } from 'services';
-import { ActionTicketType, ITicket, store } from 'store';
-import { TicketRequestState } from './interfaces';
+import { ActionTicketType, ICompany, ISegment, ITicket, store } from 'store';
+import { IRequestState } from './interfaces';
 import { ActionApiType } from './actions';
 
 export const requestTickets = (amount: number, offset: number) => async () => {
   console.log('requestTickets', amount, offset);
   try {
-    if (store.getState().api.ticketsRequestState === TicketRequestState.PENDING) return;
+    if (store.getState().api.ticketsRequestState === IRequestState.PENDING) return;
+
+    const oldSegments = store.getState().tickets.segments;
+    const oldCompanies = store.getState().tickets.companies;
+
     store.dispatch({ type: ActionApiType.TICKETS_PENDING });
+    // 1. get tickets
     const tickets = await Services.api.getTickets(amount, offset);
-    store.dispatch({ type: ActionApiType.TICKETS_RESOLVED });
-
     const ticketRecord: Record<string, ITicket> = {};
-    tickets.forEach(t => ticketRecord[t.id] = t);
 
-    store.dispatch({ type: ActionTicketType.TICKETS_ADDED, tickets: ticketRecord });
+    // 2. collect new info
+    const newSegments: Set<string> = new Set<string>();
+    const newCompanies: Set<string> = new Set<string>();
+
+    tickets.forEach(t => {
+
+      // 2.1 - normalize tickets
+      ticketRecord[t.id] = t;
+
+      // 2.2 - collect new segments
+      t.segments.forEach(id => {
+        if (oldSegments[id] == null) {
+          newSegments.add(id);
+        }
+      });
+
+      // 2.3 - collect new companies
+      if (oldCompanies[t.companyId] == null) {
+        newCompanies.add(t.companyId);
+      }
+    });
+
+    console.log('newSegments', newSegments);
+    console.log('newCompanies', newCompanies);
+
+    const [companies, segments] = await Promise.all([
+      Services.api.getCompanies(Array.from(newCompanies)),
+      Services.api.getSegments(Array.from(newSegments)),
+    ]);
+
+    const companiesRecord: Record<string, ICompany> = {};
+    companies.forEach(c => companiesRecord[c.id] = c);
+
+    const segmentsRecord: Record<string, ISegment> = {};
+    segments.forEach(c => segmentsRecord[c.id] = c);
+
+    store.dispatch({
+      type: ActionTicketType.TICKETS_ADDED,
+      tickets: ticketRecord,
+      segments: segmentsRecord,
+      companies: companiesRecord,
+    });
+    
+    store.dispatch({ type: ActionApiType.TICKETS_RESOLVED });
   } catch (e: any) {
     store.dispatch({ type: ActionApiType.TICKETS_REJECTED, reason: e.toString() });
   }

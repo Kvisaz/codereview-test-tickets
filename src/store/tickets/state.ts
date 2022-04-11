@@ -5,5 +5,6 @@ export const InitialTicketState: ITicketState = {
   showed: 0,
   sortOrder: TicketSort.CHEAPEST,
   tickets: {},
-  companiesId: []
+  companies: {},
+  segments: {}
 };

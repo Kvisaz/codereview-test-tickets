@@ -6,8 +6,10 @@ import { useTicketState } from '../../store';
 
 export const Tickets: React.FC = () => {
 
-  const { tickets } = useTicketState();
+  const { tickets, companies, segments } = useTicketState();
   console.log('tickets', tickets);
+  console.log('companies', companies);
+  console.log('segments', segments);
 
   return (<div className={`page`}>
     <div className={`pageHeader ${styles.logo}`}>

@@ -1,5 +1,6 @@
-import { IApiState, TicketRequestState } from './interfaces';
+import { IApiState, IRequestState } from './interfaces';
 
 export const InitialApiState: IApiState = {
-  ticketsRequestState: TicketRequestState.NOT_SETTED,
+  ticketsRequestState: IRequestState.NOT_SETTED,
+  companiesRequestState: IRequestState.NOT_SETTED
 };

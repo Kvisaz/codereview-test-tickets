@@ -44,6 +44,14 @@ export function ticketReducer(
           ...state.tickets,
           ...action.tickets,
         },
+        companies: {
+          ...state.companies,
+          ...action.companies,
+        },
+        segments: {
+          ...state.segments,
+          ...action.segments,
+        },
       };
     }
 
