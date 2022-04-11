@@ -16,21 +16,14 @@ export const Tickets: React.FC = () => {
     );
   }
 
-  if (ticketsRequestState === RequestState.PENDING || ticketsRequestState === RequestState.NOT_SETTED) {
-    const arr = Array.from(new Array(nextTicketAmount));
-    return (
-      <>
-        {arr.map((_, i) => {
-          return (<TicketSkeleton key={i} />);
-        })
-        }
-      </>
-    );
-  }
-
+  const skeletonsAmount = ticketsRequestState === RequestState.PENDING || ticketsRequestState === RequestState.NOT_SETTED ? nextTicketAmount : 0;
+  
   return (
     <>
       {Object.values(tickets).map(ticket => (<Ticket key={ticket.id} ticket={ticket} />))}
+      {
+        skeletonsAmount > 0 && Array.from(new Array(skeletonsAmount)).map((_, i) => (<TicketSkeleton key={i} />))
+      }
     </>
   );
 };

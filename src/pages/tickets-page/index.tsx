@@ -4,6 +4,7 @@ import { CompanySelector, Logo, SortButtons, TransferChecks } from 'components';
 import styles from './tickets-page.module.css';
 import { useTicketState } from '../../store';
 import { Tickets } from '../../components/tickets';
+import { ButtonMore } from '../../components/button-more';
 
 export const TicketsPage: React.FC = () => {
 
@@ -24,6 +25,7 @@ export const TicketsPage: React.FC = () => {
       <div className={`pageColumn pageMain`}>
         <SortButtons />
         <Tickets />
+        <ButtonMore />
       </div>
     </div>
   </div>);

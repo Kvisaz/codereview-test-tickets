@@ -37,7 +37,7 @@ export function ticketReducer(
     }
 
     case ActionTicketType.TICKETS_ADDED: {
-      console.log('ActionTicketType.TICKETS_ADDED');
+      console.log('ActionTicketType.TICKETS_ADDED', action);
       return {
         ...state,
         tickets: {
@@ -52,6 +52,7 @@ export function ticketReducer(
           ...state.segments,
           ...action.segments,
         },
+        nextTicketOffset: action.nextTicketsOffset
       };
     }
 

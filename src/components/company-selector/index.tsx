@@ -17,8 +17,7 @@ export interface ICompanySelectorProps {
 
 export const CompanySelector: React.FC<ICompanySelectorProps> = () => {
 
-  const { tickets, nextTicketAmount } = useTicketState();
-  const { ticketsRequestState, error } = useApiState();
+  const { ticketsRequestState } = useApiState();
 
 
   const [selected, setSelected] = useState(0);

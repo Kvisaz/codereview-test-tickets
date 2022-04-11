@@ -8,11 +8,12 @@ export const requestTickets = (amount: number, offset: number) => async () => {
   try {
     if (store.getState().api.ticketsRequestState === RequestState.PENDING) return;
 
-    const { segments: oldSegments, companies: oldCompanies, nextTicketOffset } = store.getState().tickets;
+    const { segments: oldSegments, companies: oldCompanies, tickets: oldTickets, nextTicketOffset } = store.getState().tickets;
 
     store.dispatch({ type: ActionApiType.TICKETS_PENDING });
     // 1. get tickets
     const tickets = await Services.api.getTickets(amount, offset);
+    console.log('API tickets', tickets);
     const ticketRecord: Record<string, ITicket> = {};
 
     // 2. collect new info
