@@ -38,4 +38,6 @@ export interface ITicketState {
   companies: Record<string, ICompany>;
   nextTicketAmount: number;
   nextTicketOffset: number;
+  origin: CityCodes;
+  destination: CityCodes;
 }

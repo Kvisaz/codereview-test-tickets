@@ -3,7 +3,7 @@ import { ISegment, ITicket, RequestState, TicketSort, useApiState, useTicketStat
 import { Ticket, TicketSkeleton } from '../ticket';
 
 export const Tickets: React.FC = () => {
-  const { tickets, nextTicketAmount, segments, sortOrder } = useTicketState();
+  const { tickets, nextTicketAmount, segments, sortOrder, origin, destination } = useTicketState();
   const { ticketsRequestState, error } = useApiState();
 
   if (ticketsRequestState === RequestState.REJECTED) {

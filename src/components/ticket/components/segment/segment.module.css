@@ -1,0 +1,4 @@
+.segment {
+    display: flex;
+    gap: var(--padding);
+}

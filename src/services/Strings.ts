@@ -13,7 +13,6 @@ export class Strings {
  ticketSortFastest = 'Самый быстрый';
  ticketSortOptimal = 'Оптимальный';
 
- ticketCellInWayLabel = 'В пути';
-
  buttonShowMoreLabel = 'Показать еще {{1}} билетов';
+ segmentTimeLabel = 'В пути';
 }

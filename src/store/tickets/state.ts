@@ -8,5 +8,7 @@ export const InitialTicketState: ITicketState = {
   companies: {},
   segments: {},
   nextTicketAmount: 3,
-  nextTicketOffset: 0
+  nextTicketOffset: 0,
+  origin: 'MOW',
+  destination: 'EKT'
 };
