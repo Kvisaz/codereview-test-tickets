@@ -1,12 +1,12 @@
 import { Services } from 'services';
 import { ActionTicketType, ICompany, ISegment, ITicket, store } from 'store';
-import { IRequestState } from './interfaces';
+import { RequestState } from './interfaces';
 import { ActionApiType } from './actions';
 
 export const requestTickets = (amount: number, offset: number) => async () => {
   console.log('requestTickets', amount, offset);
   try {
-    if (store.getState().api.ticketsRequestState === IRequestState.PENDING) return;
+    if (store.getState().api.ticketsRequestState === RequestState.PENDING) return;
 
     const { segments: oldSegments, companies: oldCompanies, nextTicketOffset } = store.getState().tickets;
 

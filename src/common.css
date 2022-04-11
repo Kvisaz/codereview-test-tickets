@@ -51,3 +51,20 @@ a {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: var(--common-border-radius);
 }
+
+.skeletonBlock {
+    opacity: 0.35;
+}
+
+.skeleton {
+    background-color: rgba(74, 74, 74, 0.76);
+    color: transparent;
+    opacity: 0.35;
+}
+
+
+.skeleton img,
+.skeleton div,
+.skeleton label {
+    visibility: hidden;
+}

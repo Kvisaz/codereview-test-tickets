@@ -1,8 +1,9 @@
 import React from 'react';
 import 'common.css';
-import { CompanySelector, Logo, SortButtons, Ticket, TransferChecks } from 'components';
+import { CompanySelector, Logo, SortButtons, TransferChecks } from 'components';
 import styles from './tickets-page.module.css';
 import { useTicketState } from '../../store';
+import { Tickets } from '../../components/tickets';
 
 export const TicketsPage: React.FC = () => {
 
@@ -22,10 +23,7 @@ export const TicketsPage: React.FC = () => {
       </div>
       <div className={`pageColumn pageMain`}>
         <SortButtons />
-        <Ticket />
-        <Ticket />
-        <Ticket />
-        <Ticket />
+        <Tickets />
       </div>
     </div>
   </div>);

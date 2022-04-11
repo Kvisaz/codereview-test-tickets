@@ -7,6 +7,6 @@ export const InitialTicketState: ITicketState = {
   tickets: {},
   companies: {},
   segments: {},
-  nextTicketAmount: 5,
+  nextTicketAmount: 3,
   nextTicketOffset: 0
 };

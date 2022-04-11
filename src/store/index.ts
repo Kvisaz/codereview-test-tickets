@@ -12,13 +12,10 @@ import {
   TicketSort,
 } from './tickets';
 
-import {
-  requestTickets
-} from './api'
+import { ActionApi, apiReducer, IApiState, RequestState, requestTickets } from './api';
 
 
 import { TypedUseSelectorHook, useDispatch as ReactUseDispatch, useSelector as ReactUseSelector } from 'react-redux';
-import { ActionApi, apiReducer, IApiState } from './api';
 
 export type {
   ITicket, ActionTicket, ISegment, CityCodes, ICompany, ITicketState,
@@ -27,9 +24,10 @@ export type {
 export {
   ActionTicketType,
   TicketSort,
+  RequestState
 };
 
-export {requestTickets}
+export { requestTickets };
 
 
 const rootReducer = combineReducers({
@@ -51,7 +49,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(rootReducer,
   composeEnhancers(
     applyMiddleware(
-      thunk
+      thunk,
     ),
   ));
 
@@ -72,4 +70,8 @@ export interface IGetState {
 
 export function useTicketState(): ITicketState {
   return useSelector((state: RootState) => ({ ...state.tickets }));
+}
+
+export function useApiState(): IApiState {
+  return useSelector((state: RootState) => ({ ...state.api }));
 }
