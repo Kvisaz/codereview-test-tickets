@@ -1,6 +1,6 @@
 import React from 'react';
-import { ITicket } from 'store';
-import { CompaniesLogos, TicketSkeleton } from './components';
+import { ITicket, useTicketState } from 'store';
+import { CompaniesLogos, getCompanyLogoSrc, TicketSkeleton } from './components';
 import styles from './ticket.module.css';
 import { useTicketSegments } from 'store/tickets';
 import { Segment } from './components/segment';
@@ -11,16 +11,19 @@ export interface ITicketProps {
 
 export const Ticket: React.FC<ITicketProps> = ({ ticket }) => {
 
+  const { companies } = useTicketState();
   const ticketSegments = useTicketSegments(ticket.id);
 
-  console.log('ticket', ticket);
-
+  const logoSrc = getCompanyLogoSrc(companies[ticket.companyId]);
 
   return (
     <div className={`block ${styles.ticket}`}>
       <div className={styles.header}>
         <div className={styles.price}>{formatPrice(ticket.price)} Р</div>
-        <img src={CompaniesLogos.S7} className={styles.logo} alt={'company'} />
+        {logoSrc.length > 0 ? (
+          <img src={logoSrc} className={styles.logo} alt={'company'} />
+        ) : (<div className={styles.logo}>
+        </div>)}
       </div>
       <div className={styles.cells}>
         {ticketSegments.map((segment) => <Segment key={segment.id} segment={segment} />)}
