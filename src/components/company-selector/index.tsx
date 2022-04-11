@@ -14,7 +14,6 @@ export const CompanySelector: React.FC = () => {
   const companiesArr = Object.values(companies);
 
   const onSelect = (id: string | null) => {
-    console.log('select!');
     dispatch({ type: ActionTicketType.COMPANY_SELECT, id });
   };
 
@@ -27,7 +26,7 @@ export const CompanySelector: React.FC = () => {
   return (<SideWidget label={Services.strings.companyChecksTitle}>
     <CompanyRow selectedId={selectedCompanyId} companyId={null} companyName={Services.strings.companyChecksOptionAll}
                 onSelect={onSelect} />
-    {companiesArr.map((company, i) => (
+    {companiesArr.map((company) => (
       <CompanyRow key={company.id} companyId={company.id} companyName={company.name} onSelect={onSelect} />
     ))}
   </SideWidget>);

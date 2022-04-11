@@ -18,7 +18,6 @@ export const SortButtons: React.FC = () => {
 
   const { sortOrder } = useTicketState();
   const dispatch = useDispatch();
-  console.log('sortOrder', sortOrder);
 
   const onSelect = (i: number) => {
     dispatch({

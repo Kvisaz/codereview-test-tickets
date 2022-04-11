@@ -8,7 +8,6 @@ export function ticketReducer(
 ): ITicketState {
   switch (action.type) {
     case ActionTicketType.SHOW_MORE: {
-      console.log('ActionTicketType.SHOW_MORE');
       return {
         ...state,
       };
@@ -20,7 +19,6 @@ export function ticketReducer(
       };
     }
     case ActionTicketType.TRANSFER_SELECT: {
-      console.log('ActionTicketType.TRANSFER_SELECT');
       return {
         ...state,
         selectedTransfers: {
@@ -30,7 +28,6 @@ export function ticketReducer(
       };
     }
     case ActionTicketType.COMPANY_SELECT: {
-      console.log('ActionTicketType.COMPANY_SELECT');
       return {
         ...state,
         selectedCompanyId: action.id
@@ -38,7 +35,6 @@ export function ticketReducer(
     }
 
     case ActionTicketType.TICKETS_ADDED: {
-      console.log('ActionTicketType.TICKETS_ADDED', action);
       return {
         ...state,
         tickets: {

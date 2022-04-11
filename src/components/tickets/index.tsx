@@ -3,7 +3,7 @@ import { ISegment, ITicket, RequestState, TicketSort, useApiState, useTicketStat
 import { Ticket, TicketSkeleton } from '../ticket';
 
 export const Tickets: React.FC = () => {
-  const { tickets, nextTicketAmount, segments, sortOrder, selectedCompanyId, selectedTransfers } = useTicketState();
+  const { tickets, nextTicketAmount, segments, sortOrder, selectedCompanyId } = useTicketState();
   const { ticketsRequestState, error } = useApiState();
 
   if (ticketsRequestState === RequestState.REJECTED) {
@@ -16,7 +16,6 @@ export const Tickets: React.FC = () => {
 
   const ticketArr = Object.values(tickets);
   const filteredbYCompany = filterCompanies(ticketArr, selectedCompanyId);
-  console.log('selectedCompanyId', selectedCompanyId);
 
 
   const sortedTickets = sortTickets(filteredbYCompany, sortOrder, segments);
@@ -63,7 +62,6 @@ function getOptimal(tickets: ITicket[], segments: Record<string, ISegment>): ITi
 
 function getTicketTime(ticket: ITicket, segments: Record<string, ISegment>): number {
   const segArr = ticket.segments.map(id => segments[id]).sort((a, b) => a.dateStart - b.dateStart);
-  console.log('segArr', segArr);
   return segArr[segArr.length - 1].dateEnd - segArr[0].dateStart;
 }
 

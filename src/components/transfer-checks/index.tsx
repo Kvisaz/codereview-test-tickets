@@ -20,7 +20,6 @@ export const TransferChecks: React.FC = () => {
 
   const { selectedTransfers } = useTicketState();
   const dispatch = useDispatch();
-  console.log('selectedTransfers', selectedTransfers);
 
   const onSelect = (amount: number) => {
     dispatch({

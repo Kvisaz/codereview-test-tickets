@@ -4,16 +4,14 @@ import { RequestState } from './interfaces';
 import { ActionApiType } from './actions';
 
 export const requestTickets = (amount: number, offset: number) => async () => {
-  console.log('requestTickets', amount, offset);
   try {
     if (store.getState().api.ticketsRequestState === RequestState.PENDING) return;
 
-    const { segments: oldSegments, companies: oldCompanies, tickets: oldTickets, nextTicketOffset } = store.getState().tickets;
+    const { segments: oldSegments, companies: oldCompanies, nextTicketOffset } = store.getState().tickets;
 
     store.dispatch({ type: ActionApiType.TICKETS_PENDING });
     // 1. get tickets
     const tickets = await Services.api.getTickets(amount, offset);
-    console.log('API tickets', tickets);
     const ticketRecord: Record<string, ITicket> = {};
 
     // 2. collect new info
@@ -37,10 +35,6 @@ export const requestTickets = (amount: number, offset: number) => async () => {
         newCompanies.add(t.companyId);
       }
     });
-
-    console.log('newSegments', newSegments);
-    console.log('newCompanies', newCompanies);
-
     const [companies, segments] = await Promise.all([
       Services.api.getCompanies(Array.from(newCompanies)),
       Services.api.getSegments(Array.from(newSegments)),
