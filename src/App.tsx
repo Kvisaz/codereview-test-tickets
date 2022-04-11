@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Tickets } from './pages';
+import { TicketsPage } from './pages';
 import { requestTickets, useDispatch, useTicketState } from './store';
 
 export const App: React.FC = () => {
@@ -9,6 +9,6 @@ export const App: React.FC = () => {
     dispatch(requestTickets(nextTicketAmount, nextTicketOffset));
   }, [dispatch]);
   return (
-    <Tickets />
+    <TicketsPage />
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import 'common.css';
 import { CompanySelector, Logo, SortButtons, Ticket, TransferChecks } from 'components';
-import styles from './tickets.module.css';
+import styles from './tickets-page.module.css';
 import { useTicketState } from '../../store';
 
-export const Tickets: React.FC = () => {
+export const TicketsPage: React.FC = () => {
 
   const { tickets, companies, segments } = useTicketState();
   console.log('tickets', tickets);
