@@ -5,7 +5,13 @@ export type ActionTicket =
   | { type: ActionTicketType.SHOW_MORE; }
   | { type: ActionTicketType.TRANSFER_SELECT; amount: number }
   | { type: ActionTicketType.COMPANY_SELECT; id?: string }
-  | { type: ActionTicketType.TICKETS_ADDED; tickets: Record<string, ITicket>, companies: Record<string, ICompany>, segments: Record<string, ISegment> }
+  | {
+  type: ActionTicketType.TICKETS_ADDED;
+  tickets: Record<string, ITicket>,
+  companies: Record<string, ICompany>,
+  segments: Record<string, ISegment>,
+  nextTicketsOffset: number
+}
 
 export enum ActionTicketType {
   SORT = 'SORT',

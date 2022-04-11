@@ -35,5 +35,7 @@ export interface ITicketState {
   tickets: Record<string, ITicket>;
   segments: Record<string, ISegment>;
   showed: number;
-  companies: Record<string, ICompany>; 
+  companies: Record<string, ICompany>;
+  nextTicketAmount: number;
+  nextTicketOffset: number;
 }

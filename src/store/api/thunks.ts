@@ -8,8 +8,7 @@ export const requestTickets = (amount: number, offset: number) => async () => {
   try {
     if (store.getState().api.ticketsRequestState === IRequestState.PENDING) return;
 
-    const oldSegments = store.getState().tickets.segments;
-    const oldCompanies = store.getState().tickets.companies;
+    const { segments: oldSegments, companies: oldCompanies, nextTicketOffset } = store.getState().tickets;
 
     store.dispatch({ type: ActionApiType.TICKETS_PENDING });
     // 1. get tickets
@@ -57,8 +56,9 @@ export const requestTickets = (amount: number, offset: number) => async () => {
       tickets: ticketRecord,
       segments: segmentsRecord,
       companies: companiesRecord,
+      nextTicketsOffset: nextTicketOffset + amount,
     });
-    
+
     store.dispatch({ type: ActionApiType.TICKETS_RESOLVED });
   } catch (e: any) {
     store.dispatch({ type: ActionApiType.TICKETS_REJECTED, reason: e.toString() });
