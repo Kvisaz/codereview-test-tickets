@@ -68,3 +68,23 @@ a {
 .skeleton label {
     visibility: hidden;
 }
+
+@media (max-width: 800px) {
+    .pageContent {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .pageMain,
+    .pageSelectors {
+        width: 100%;
+    }
+
+    .pageSelectors {
+        flex-direction: row;
+    }
+
+    .pageSelectors .block {
+        flex: 1;
+    }
+}
