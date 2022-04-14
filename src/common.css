@@ -22,6 +22,7 @@ a {
 
 .pageHeader {
     display: flex;
+    height: 160px;
     align-items: center;
     justify-content: center;
 }
@@ -70,6 +71,12 @@ a {
 }
 
 @media (max-width: 800px) {
+
+    .pageHeader {
+        height: 60px;
+        margin-top: var(--page-padding);
+    }
+
     .pageContent {
         flex-direction: column;
         padding: 10px;

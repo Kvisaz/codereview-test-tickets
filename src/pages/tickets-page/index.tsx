@@ -1,14 +1,13 @@
 import React from 'react';
 import 'common.css';
 import { CompanySelector, Logo, SortButtons, TransferChecks } from 'components';
-import styles from './tickets-page.module.css';
 import { Tickets } from '../../components/tickets';
 import { ButtonMore } from '../../components/button-more';
 
 export const TicketsPage: React.FC = () => {
 
   return (<div className={`page`}>
-    <div className={`pageHeader ${styles.logo}`}>
+    <div className={`pageHeader`}>
       <Logo />
     </div>
     <div className={`pageContent`}>
