@@ -3,7 +3,7 @@ import { ISegment, ITicket, RequestState, TicketSort, useApiState, useTicketStat
 import { Ticket, TicketSkeleton } from '../ticket';
 
 export const Tickets: React.FC = () => {
-  const { tickets, nextTicketAmount, segments, sortOrder, selectedCompanyId } = useTicketState();
+  const { tickets, nextTicketAmount, segments, sortOrder, selectedCompanyId, selectedTransfers } = useTicketState();
   const { ticketsRequestState, error } = useApiState();
 
   if (ticketsRequestState === RequestState.REJECTED) {
@@ -16,9 +16,9 @@ export const Tickets: React.FC = () => {
 
   const ticketArr = Object.values(tickets);
   const filteredbYCompany = filterCompanies(ticketArr, selectedCompanyId);
+  const filteredByTransfers = filteredTransfers(filteredbYCompany, selectedTransfers, segments);
 
-
-  const sortedTickets = sortTickets(filteredbYCompany, sortOrder, segments);
+  const sortedTickets = sortTickets(filteredByTransfers, sortOrder, segments);
 
   const skeletonsAmount = ticketsRequestState === RequestState.PENDING || ticketsRequestState === RequestState.NOT_SETTED ? nextTicketAmount : 0;
 
@@ -67,4 +67,17 @@ function getTicketTime(ticket: ITicket, segments: Record<string, ISegment>): num
 
 function getTicketPriceTime(ticket: ITicket, segments: Record<string, ISegment>): number {
   return getTicketTime(ticket, segments) * ticket.price;
+}
+
+function filteredTransfers(ticketArr: ITicket[], selectedTransfers: Record<number, boolean | null>, segments: Record<string, ISegment>): ITicket[] {
+  const nonZeroes = Object.values(selectedTransfers).filter(v => v != null);
+  if (nonZeroes.length === 0) return ticketArr;
+
+
+  return ticketArr.filter(ticket => {
+    const ticketTransfers = ticket
+      .segments.map(id => segments[id])
+      .reduce((acc, next) => acc + next.stops.length, 0);
+    return selectedTransfers[ticketTransfers];
+  });
 }
