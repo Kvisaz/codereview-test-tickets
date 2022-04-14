@@ -35,11 +35,6 @@ const rootReducer = combineReducers({
   api: apiReducer,
 });
 
-export interface IRootState {
-  tickets: ITicketState;
-  api: IApiState;
-}
-
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -64,12 +59,8 @@ export type AppThunk<TReturn = void> = ActionCreator<ThunkAction<TReturn, Action
 export const useDispatch = () => ReactUseDispatch<AppDispatch | AppThunk>();
 
 
-export interface IGetState {
-  (): IRootState;
-}
-
 export function useTicketState(): ITicketState {
-  return useSelector((state: RootState) => ({ ...state.tickets }));
+  return useSelector((state: RootState) => state.tickets);
 }
 
 export function useApiState(): IApiState {
