@@ -7,20 +7,20 @@ export function apiReducer(state: IApiState = InitialApiState, action: ActionApi
     case ActionApiType.TICKETS_PENDING: {
       return {
         ...state,
-        ticketsRequestState: RequestState.PENDING
+        ticketsRequestState: RequestState.PENDING,
       };
     }
     case ActionApiType.TICKETS_RESOLVED: {
       return {
         ...state,
-        ticketsRequestState: RequestState.RESOLVED
+        ticketsRequestState: RequestState.RESOLVED,
       };
     }
     case ActionApiType.TICKETS_REJECTED: {
       return {
         ...state,
         ticketsRequestState: RequestState.REJECTED,
-        error: action.reason
+        error: action.reason,
       };
     }
     default:

@@ -10,5 +10,5 @@ export const InitialTicketState: ITicketState = {
   nextTicketAmount: 3,
   nextTicketOffset: 0,
   origin: 'MOW',
-  destination: 'EKT'
+  destination: 'EKT',
 };

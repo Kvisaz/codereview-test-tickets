@@ -25,7 +25,7 @@ export const SortButtons: React.FC = () => {
       order: buttons[i]?.order ?? TicketSort.FASTEST,
     });
   };
-  
+
   return (
     <div className={`block ${styles.group} `}>
       {buttons.map(({ order, label }, i) => (

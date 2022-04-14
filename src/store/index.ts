@@ -24,7 +24,7 @@ export type {
 export {
   ActionTicketType,
   TicketSort,
-  RequestState
+  RequestState,
 };
 
 export { requestTickets };

@@ -1,8 +1,8 @@
 .label {
-  cursor: var(--cursor);
+    cursor: var(--cursor);
 }
 
 .selected {
-  composes: label;
-  background-color: var(--secondary-color);
+    composes: label;
+    background-color: var(--secondary-color);
 }

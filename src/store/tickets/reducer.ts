@@ -30,7 +30,7 @@ export function ticketReducer(
     case ActionTicketType.COMPANY_SELECT: {
       return {
         ...state,
-        selectedCompanyId: action.id
+        selectedCompanyId: action.id,
       };
     }
 
@@ -49,7 +49,7 @@ export function ticketReducer(
           ...state.segments,
           ...action.segments,
         },
-        nextTicketOffset: action.nextTicketsOffset
+        nextTicketOffset: action.nextTicketsOffset,
       };
     }
 

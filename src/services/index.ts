@@ -3,5 +3,5 @@ import { Api } from './api';
 
 export const Services = {
   strings: new Strings(),
-  api: new Api()
+  api: new Api(),
 };
