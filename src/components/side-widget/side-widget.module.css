@@ -1,0 +1,26 @@
+.sideWidget {
+    display: flex;
+    flex-direction: column;
+    width: 232px;
+    box-sizing: content-box;
+    padding-bottom: var(--page-padding);
+}
+
+.label {
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: var(--page-padding);
+}
+
+.sideWidget label {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sideWidget input[type='checkbox'],
+.sideWidget input[type='radio'] {
+    margin-left: var(--page-padding);
+    margin-right: var(--page-padding);
+}

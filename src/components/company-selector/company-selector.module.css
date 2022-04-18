@@ -1,0 +1,8 @@
+.label {
+    cursor: var(--cursor);
+}
+
+.selected {
+    composes: label;
+    background-color: var(--secondary-color);
+}

@@ -1,0 +1,37 @@
+.ticket {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 100%;
+    --padding: var(--page-padding);
+    padding: var(--padding);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--padding);
+}
+
+.price {
+    color: var(--primary-color);
+    font-size: 24px;
+}
+
+.logo {
+    max-height: 36px;
+}
+
+.cells {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cellsRow {
+    display: flex;
+    gap: var(--padding);
+}

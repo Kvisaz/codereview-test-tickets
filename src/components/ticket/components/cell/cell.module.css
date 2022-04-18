@@ -1,0 +1,16 @@
+.cell {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    flex: 1;
+}
+
+.label {
+    color: var(--secondary-content-color);
+    font-size: 12px;
+}
+
+.value {
+    color: var(--primary-content-color);
+    font-size: 14px;
+}

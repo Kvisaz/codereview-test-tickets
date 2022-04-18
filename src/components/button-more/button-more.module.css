@@ -1,0 +1,10 @@
+.button {
+    flex: 1;
+    text-transform: uppercase;
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid #DFE5EC;
+    padding: 15px;
+    font-weight: 600;
+    cursor: var(--cursor);
+}

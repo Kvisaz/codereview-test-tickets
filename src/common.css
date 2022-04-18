@@ -1,0 +1,97 @@
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #F1FCFF;
+    --selected-color: var(--secondary-color);
+    --cursor: url('../public/cursor.png'), auto;
+    --primary-content-color: #4A4A4A;
+    --secondary-content-color: #A0B0B9;
+    --page-padding: 20px;
+    --common-border-radius: 5px;
+}
+
+a {
+    cursor: var(--cursor);
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pageHeader {
+    display: flex;
+    height: 160px;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageContent {
+    display: flex;
+    gap: var(--page-padding);
+}
+
+.pageColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--page-padding);
+}
+
+.pageSelectors {
+    display: flex;
+    flex-direction: column;
+}
+
+.pageMain {
+    width: 502px;
+}
+
+.block {
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--common-border-radius);
+}
+
+.skeletonBlock {
+    opacity: 0.35;
+}
+
+.skeleton {
+    background-color: rgba(74, 74, 74, 0.76);
+    color: transparent;
+    opacity: 0.35;
+}
+
+
+.skeleton img,
+.skeleton div,
+.skeleton label {
+    visibility: hidden;
+}
+
+@media (max-width: 800px) {
+
+    .pageHeader {
+        height: 60px;
+        margin-top: var(--page-padding);
+    }
+
+    .pageContent {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .pageMain,
+    .pageSelectors {
+        width: 100%;
+    }
+
+    .pageSelectors {
+        flex-direction: row;
+    }
+
+    .pageSelectors .block {
+        flex: 1;
+    }
+}
